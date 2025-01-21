@@ -1,0 +1,14 @@
+USE DB_RH
+GO
+
+--INSERINDO REGISTROS NA TABELA TB_AREAS
+INSERT INTO TB_AREAS (DESCRICAO) VALUES ('Administração')
+GO
+
+--INSERINDO VARIOS REGISTROS
+INSERT INTO TB_AREAS (DESCRICAO) VALUES
+('Marketing'),
+('Financeiro'),
+('Recursos Humanos'),
+('Suporte Tecnico')
+GO
