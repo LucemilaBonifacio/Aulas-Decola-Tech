@@ -22,4 +22,9 @@ export class Exemplo02Component implements OnInit{
   listar() : void{
     this.pessoas = this.service.listarPessoas();
   }
+
+  nomePessoa!: string;
+  mostrar(nome: string) : void{
+    this.nomePessoa = nome;
+  }
 }

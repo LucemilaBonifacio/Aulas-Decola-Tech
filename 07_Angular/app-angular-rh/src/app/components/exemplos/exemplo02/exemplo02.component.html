@@ -3,11 +3,13 @@
 <div class="alert alert-primary">
 
     <div class="mb-3">
-        <select class="from-select">
+        <select #lista class="from-select" (change)="mostrar(lista.value)">
               <option value="">SELECIONE</option>  
               <option *ngFor="let p of pessoas" [value]="p.nome">{{p.nome}} - {{p.idade}}</option>
         </select>
-
+    </div>
+    <div class="mb-3">
+        <div *ngIf="nomePessoa">Pessoa selecionada: {{nomePessoa}}</div>
     </div>
 
 </div>
