@@ -3,10 +3,11 @@ import { PessoaService } from '../../../services/pessoa.service';
 import { Pessoa } from '../../../classes/pessoa';
 import { CommonModule, NgFor } from '@angular/common';
 import { TamanhoPipe } from '../../../pipes/tamanho.pipe';
+import { FiltroPipe } from '../../../pipes/filtro.pipe';
 
 @Component({
   selector: 'app-exemplo03',
-  imports: [CommonModule, TamanhoPipe],
+  imports: [CommonModule, TamanhoPipe, FiltroPipe],
   templateUrl: './exemplo03.component.html',
   styleUrl: './exemplo03.component.css'
 })
@@ -22,9 +23,9 @@ pessoas: Pessoa[] = [];
 listar(): void {
  this.pessoas = this.service.listarPessoas();
   }
-filtrar(input: string): void {
-  this.listar
-  this.pessoas = this.pessoas.filter(p => p.nome.toLowerCase().includes(input));
-}
+// filtrar(input: string): void {
+//   this.listar
+//   this.pessoas = this.pessoas.filter(p => p.nome.toLowerCase().includes(input));
+//   }
 }
 

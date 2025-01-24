@@ -3,7 +3,7 @@
 <div class="alert alert-primary">
 
     <div class="mb-3">
-        <select #lista class="from-select" (change)="mostrar(lista.value)">
+        <select #lista class="form-select" (change)="mostrar(lista.value)">
               <option value="">SELECIONE</option>  
               <option *ngFor="let p of pessoas" [value]="p.nome">{{p.nome}} - {{p.idade}}</option>
         </select>

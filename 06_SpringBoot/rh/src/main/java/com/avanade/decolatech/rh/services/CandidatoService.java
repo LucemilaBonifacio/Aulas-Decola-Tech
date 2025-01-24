@@ -34,5 +34,17 @@ public class CandidatoService {
 				candidato.getTelefone(),
 				candidato.getEmail());
 	}
+	public Candidato alterarCandidato(Candidato candidato, String cpf) {
+		candidato.setCpf(cpf);
+		return candidatoRepository.save(candidato);
+	}
 	
+	public String removerCandidato(String cpf) {
+		try {
+			candidatoRepository.deleteById(cpf); 
+			return "Candidato removido!";
+		} catch (Exception e) {
+			return e.toString();
+		}
+	}
 }
