@@ -6,6 +6,7 @@ import { Erro404Component } from './components/erros/erro404/erro404.component';
 import { CandidatoNovoComponent } from './components/candidatos/candidato-novo/candidato-novo.component';
 import { CandidatoAlteracaoComponent } from './components/candidatos/candidato-alteracao/candidato-alteracao.component';
 import { CandidatoRemocaoComponent } from './components/candidatos/candidato-remocao/candidato-remocao.component';
+import { InscricaoComponent } from './components/inscricao/inscricao.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: 'candidatos/novo', component: CandidatoNovoComponent },
     {path: 'candidatos/alteracao/:id', component: CandidatoAlteracaoComponent},
     {path: 'candidatos/remocao/:id', component: CandidatoRemocaoComponent},
+    {path: 'inscricoes', component: InscricaoComponent},
 
     {path: '**', component: Erro404Component}
 ];

@@ -1,5 +1,6 @@
 package com.avanade.decolatech.rh.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.avanade.decolatech.rh.common.Resposta;
 import com.avanade.decolatech.rh.entities.Candidato;
 import com.avanade.decolatech.rh.services.CandidatoService;
 
@@ -60,7 +62,16 @@ public class CandidatoController {
 				candidatoService.alterarCandidato(candidato, cpf), HttpStatus.ACCEPTED);
 	}
 	@DeleteMapping("/remover/{cpf}")
-	public ResponseEntity<String>removerCandidato(@PathVariable String cpf){
-		return new ResponseEntity<String>(candidatoService.removerCandidato(cpf), HttpStatus.ACCEPTED);
+	public ResponseEntity<Resposta>remover(@PathVariable String cpf){
+		try {
+			String msg = candidatoService.removerCandidato(cpf);
+			Resposta resposta = new Resposta(202, new Date(), msg);
+			return new ResponseEntity<Resposta>(resposta, HttpStatus.ACCEPTED);
+		} catch(Exception e) {
+			Resposta resposta = new Resposta(400, new Date(), e.getMessage());
+			return new ResponseEntity<Resposta>(resposta, HttpStatus.BAD_REQUEST);
+		}
+		
 	}
+	
 }

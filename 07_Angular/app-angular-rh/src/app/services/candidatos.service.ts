@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidato } from '../classes/candidato';
+import { Resposta } from '../classes/Resposta';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CandidatosService {
 
   // método para listar todos os candidatos
 
-public getCandidatosApi() : Observable<Candidato[]>{
+public getCandidatosApi(): Observable<Candidato[]> {
   const url: string = "lista";
   return this.http.get<Candidato[]>(`${this.baseUrl}/${url}`);
   }
@@ -35,9 +36,9 @@ public putCandidatoApi(candidato : Candidato, cpf: string) : Observable<Candidat
   return this.http.put<Candidato>(`${this.baseUrl}/${url}`, candidato);
 }
 //método para remover um candidato
-public deleteCandidatoApi(cpf: string) : Observable<string>{
+public deleteCandidatoApi(cpf: string) : Observable<Resposta>{
   const url = `remover/${cpf}`;
-  return this.http.delete<string>(`${this.baseUrl}/${url}`);
+  return this.http.delete<Resposta>(`${this.baseUrl}/${url}`);
 }
 
 }
