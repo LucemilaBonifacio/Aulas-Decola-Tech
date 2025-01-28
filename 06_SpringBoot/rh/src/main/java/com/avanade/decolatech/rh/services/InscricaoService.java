@@ -65,7 +65,7 @@ public class InscricaoService {
 		
 		//Persistindo a inscricao com JPA
 		inscricaoRepository.save(inscricao);
-		return "Inscrição efetuada com sucesso!";
+		return "Inscrição do candidato " + candidato.getNome() + " efetuada com sucesso!";
 	}
 	
 }

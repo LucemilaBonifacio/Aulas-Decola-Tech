@@ -7,6 +7,7 @@ import { Cargo } from '../../classes/cargo';
 import { Candidato } from '../../classes/candidato';
 import { CandidatosService } from '../../services/candidatos.service';
 import { Inscricao } from '../../classes/inscricao';
+import { InscricoesService } from '../../services/inscricoes.service';
 
 @Component({
   selector: 'app-inscricao',
@@ -16,7 +17,11 @@ import { Inscricao } from '../../classes/inscricao';
 })
 export class InscricaoComponent implements OnInit{
 
-  constructor(private router: Router, private cargoService: CargoService, private candidatoService: CandidatosService){}
+  constructor(private router: Router, 
+  private cargoService: CargoService, 
+  private candidatoService: CandidatosService, 
+  private inscricaoService: InscricoesService){}
+
   ngOnInit(): void {
     this.listarCargos();
     this.listarCandidatos();
@@ -26,6 +31,10 @@ export class InscricaoComponent implements OnInit{
   candidatos: Candidato[] = [];
   inscricao: Inscricao = new Inscricao;
 
+  erro: string = '';
+  sucesso: string = '';
+
+
   listarCargos(): void{
     this.cargoService.getCargosApi()
     .subscribe(res => this.cargos = res);
@@ -33,6 +42,14 @@ export class InscricaoComponent implements OnInit{
   listarCandidatos(): void{
     this.candidatoService.getCandidatosApi()
     .subscribe(res => this.candidatos = res);
+  }
+  incluir(): void{
+    // console.log(this.inscricao);
+    this.inscricaoService.efetuarInscricaoApi(this.inscricao)
+    .subscribe({
+      next: res => this.sucesso = res.mensagem,
+      error: e => this.erro = e.mensage
+    })
   }
 
 }

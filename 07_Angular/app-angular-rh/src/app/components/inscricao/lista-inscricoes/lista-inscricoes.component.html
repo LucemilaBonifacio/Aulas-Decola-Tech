@@ -1,0 +1,19 @@
+<h3>Lista de inscrições por candidato</h3>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>CPF</th>
+            <th>CANDIDATO</th>
+            <th>DATA INSCRIÇÃO</th>
+        </tr>
+    </thead>
+    <TBody>
+        <tr *ngFor="let c of lista">
+            <td>{{c.cpf}}</td>
+            <td>{{c.candidato}}</td>
+            <td>{{c.dataInscricao}}</td>
+        </tr>
+    </TBody>
+
+</table>
