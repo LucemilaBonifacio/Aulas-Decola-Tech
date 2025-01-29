@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-6">
+        <h2>Efetuar Login</h2>
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Usuário</label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="user.username"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="user.password"/>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="validar(user)">Login</button>
+            </div>
+            <div class="mt-3 alert alert-danger" *ngIf="erro">
+                {{erro}}
+            </div>
+        </form>
+    </div>
+
+</div>

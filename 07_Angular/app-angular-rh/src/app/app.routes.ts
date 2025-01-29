@@ -8,6 +8,8 @@ import { CandidatoAlteracaoComponent } from './components/candidatos/candidato-a
 import { CandidatoRemocaoComponent } from './components/candidatos/candidato-remocao/candidato-remocao.component';
 import { InscricaoComponent } from './components/inscricao/inscricao.component';
 import { ListaInscricoesComponent } from './components/inscricao/lista-inscricoes/lista-inscricoes.component';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -15,12 +17,13 @@ export const routes: Routes = [
     {path: 'exemplos', component: ExemplosComponent},
 
     {path: 'candidatos', component: CandidatosComponent},
-    {path: 'candidatos/novo', component: CandidatoNovoComponent },
-    {path: 'candidatos/alteracao/:id', component: CandidatoAlteracaoComponent},
-    {path: 'candidatos/remocao/:id', component: CandidatoRemocaoComponent},
+    {path: 'candidatos/novo', component: CandidatoNovoComponent, canActivate: [authGuard] },
+    {path: 'candidatos/alteracao/:id', component: CandidatoAlteracaoComponent, canActivate: [authGuard] },
+    {path: 'candidatos/remocao/:id', component: CandidatoRemocaoComponent, canActivate: [authGuard] },
    
     {path: 'inscricoes', component: InscricaoComponent},
     {path: 'inscricoes/candidato/:id', component: ListaInscricoesComponent},
+    {path: 'login', component: LoginComponent},
 
     {path: '**', component: Erro404Component}
 ];
